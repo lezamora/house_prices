@@ -4,7 +4,7 @@ setup(
     name='src',
     packages=find_packages(),
     version='0.1.0',
-    description='template for datascience proyects',
+    description='templato for data science proyects',
     author='lezamora',
     license='',
 )

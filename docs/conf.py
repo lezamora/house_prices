@@ -164,7 +164,7 @@ html_static_path = ['_static']
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'datasciencedoc'
+htmlhelp_basename = 'templatedoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -184,7 +184,7 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
     ('index',
-     'datascience.tex',
+     'template.tex',
      u'template Documentation',
      u"lezamora", 'manual'),
 ]
@@ -215,7 +215,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'datascience', u'template Documentation',
+    ('index', 'template', u'template Documentation',
      [u"lezamora"], 1)
 ]
 
@@ -229,9 +229,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'datascience', u'template Documentation',
+    ('index', 'template', u'template Documentation',
      u"lezamora", 'template',
-     'template for datascience proyects', 'Miscellaneous'),
+     'templato for data science proyects', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.

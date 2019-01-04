@@ -1,7 +1,7 @@
 template
 ==============================
 
-template for datascience proyects
+templato for data science proyects
 
 Project Organization
 ------------
