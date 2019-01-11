@@ -1,9 +1,25 @@
 # -*- coding: utf-8 -*-
+import pandas as pd
 import click
 import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+from features import build_features
 
+
+def __drop_columns(dataframe, columns=[]):
+    return dataframe.drop(columns=columns)
+
+def __drop_duplicates(dataframe, columns=None):
+    return dataframe.drop_duplicates(subset=columns)
+
+def __convert_type(dataframe, **kwargs):
+    for column, type in kwargs.items():
+        if type == 'int':
+            dataframe[column] = dataframe[column].astype(int)
+        elif type == 'date':
+            dataframe[column] = pd.to_datetime(dataframe[column])
+    return dataframe
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
