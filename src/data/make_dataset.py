@@ -1,5 +1,6 @@
 import sys
-sys.path.append('..')
+sys.path.insert(0, './src')
+print()
 import os
 import pandas as pd
 import logging
