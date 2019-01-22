@@ -12,6 +12,7 @@ OUTPUT_REF_PATH = os.path.join(ROOT_PATH, 'references')
 OUTPUT_MODEL_PATH = os.path.join(ROOT_PATH, 'models')
 OUTPUT_REPORT_PATH = os.path.join(ROOT_PATH, 'reports')
 OUTPUT_FIGURE_PATH = os.path.join(OUTPUT_REPORT_PATH, 'figures')
+LOGGIN_PATH = os.path.join(ROOT_PATH, 'logging.ini')
 
 one_to_left = st.beta(10, 1)
 
@@ -23,4 +24,3 @@ GRID_PARAMS = {
 }
 
 TARGET = 'price'
-

@@ -41,8 +41,7 @@ def main(input_file_path, output_model_path):
 
 
 if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    logging.config.fileConfig(constans.LOGGIN_PATH)
 
     processed_data_path = os.path.join(constans.OUTPUT_DATA_PROCESS_PATH, 'kc_house_data_clean_with_outliers.csv')
     main(processed_data_path, constans.OUTPUT_MODEL_PATH)

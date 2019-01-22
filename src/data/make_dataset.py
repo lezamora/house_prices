@@ -4,6 +4,8 @@ import os
 import pandas as pd
 import logging
 from helpers import hand_files, constans
+from logging.config import fileConfig
+
 
 
 def __set_index(df, col_index):
@@ -81,8 +83,7 @@ def main(input_file_name, output_file_name):
 
 
 if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    logging.config.fileConfig(constans.LOGGIN_PATH)
 
     raw_data_path = os.path.join(constans.DATA_RAW_PATH, 'kc_house_data.csv')
     processed_data_path = os.path.join(constans.OUTPUT_DATA_PROCESS_PATH, 'kc_house_data_clean_with_outliers.csv')
