@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split, KFold, RandomizedSearchCV
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBRegressor
 from helpers import hand_files, constans
+from logging.config import fileConfig
 
 
 def __split_data(features, target, test_size=0.20, seed=42):
@@ -16,9 +17,9 @@ def __split_data(features, target, test_size=0.20, seed=42):
 
 def __train_model(model, name, model_path, params, scoring, x_train, y_train, logger=None):
     kfold = KFold(n_splits=10, random_state=21)
-    grid = RandomizedSearchCV(model, params, n_iter=25, verbose=True, scoring=scoring, cv=kfold, n_jobs=2)
+    grid = RandomizedSearchCV(model, params, n_iter=25, verbose=True, scoring=scoring, cv=kfold, n_jobs=1)
     grid.fit(x_train, y_train)
-    hand_files.save_trained_model(model, model_path, name)
+    hand_files.save_trained_model(grid.best_estimator_, model_path, name)
     logger.info('Model name: {} Scoring: {}' 'Best params: {}'.format(name, grid.best_score_, grid.best_params_))
 
 
