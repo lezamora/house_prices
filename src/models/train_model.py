@@ -6,6 +6,7 @@ import warnings
 warnings.filterwarnings('ignore')
 from sklearn.model_selection import train_test_split, KFold, RandomizedSearchCV
 from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 from xgboost import XGBRegressor
 from helpers import hand_files, constans
 from logging.config import fileConfig
@@ -29,14 +30,14 @@ def main(input_file_path, output_model_path):
     # cargamos el dataset y definimos los features y nuestro target
     df = hand_files.load_data(input_file_path, 'csv')
     x = df.drop(constans.TARGET, axis=1)
-    scaler = StandardScaler().fit(x)
-    x = scaler.transform(x)
     y = df[constans.TARGET]
     x_train, x_test, y_train, y_test = __split_data(x, y, test_size=0.20, seed=42)
 
     # instanciamos el modelo que mejor nos dió en los análisis previo y entrenamos
-    model = XGBRegressor()
+    model = Pipeline([('sts', StandardScaler()),
+                      ('xgb', XGBRegressor())])
     logger.info('Entrenando el modelo.')
+
     __train_model(model, 'xbregresor', output_model_path, constans.GRID_PARAMS, 'r2', x_train, y_train, logger)
     logger.info('Modelo entrenado y guardado en {}'.format(output_model_path))
 
